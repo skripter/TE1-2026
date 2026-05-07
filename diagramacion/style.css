@@ -1,0 +1,36 @@
+.encabezado{
+	font-size: 200%;
+	font-family: serif;
+	text-align: center;
+	background-color: #e2edd1;
+}
+.encabezado a{
+	text-decoration: none;
+}
+.menusuperior{
+	font-size: 120%;
+	text-align: center;
+	padding: 5px;
+}
+.menulateral{
+	background-color: #f0ee8b;
+	padding: 5px;
+	width: 15%;
+	float: left;
+}
+.menulateral a{
+	font-family: sans-serif;
+	margin-bottom: 20px;
+}
+.contenido{
+	background-color: #8ba1f0;
+	padding: 5px;
+	width: 83%;
+	float: right;
+}
+.pie{
+	clear: both;
+	margin-top: 10px;
+	text-align: center;
+	border-top: 1px solid #000000;
+}
