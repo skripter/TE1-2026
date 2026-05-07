@@ -1,3 +1,8 @@
+body{
+	background-color: #eeeeee;
+	width: 80%;
+	margin: 5px auto;
+}	
 p{
 	font-size: 200%;
 	font-family: serif;
@@ -9,4 +14,21 @@ p{
 	text-align: center;
 	font-family:Roboto, Verdy, sans-serif;
 	border: 0;
+}
+
+.tabla{
+	border: 1px solid #000000;
+	border-collapse: collapse;
+}
+
+.tabla th, .tabla td{
+	padding: 0;
+	border-spacing: 0;
+	border: 1px solid #000000;
+}
+.tabla th{
+	background-color: #fcf9b3;
+}
+.tabla td{
+	padding: 4px 20px 4px 20px;
 }
