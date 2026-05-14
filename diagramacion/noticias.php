@@ -15,7 +15,7 @@
 </div>
 
 <div class='contenido'>
-Productos
+Noticias
 </div>
 
 <div class='pie'>Pie de pagina</div>
