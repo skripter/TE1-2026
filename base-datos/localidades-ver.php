@@ -17,10 +17,10 @@ while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
 <head>
 <title>Localidades por departamento</title>
 <meta charset='UTF-8'>
-<link href='./estilo.css' rel='stylesheet' type='text/css'>
+<link href='/bootstrap-5.3.8-dist/css/bootstrap.css' rel='stylesheet' type='text/css'>
 </head>
 <body>
-<table class='tablita'>
+<table class='table table-hover table-striped'>
 <caption>Listado de Localidades de: <?php echo $nombredepartamento; ?></caption>
 <tr>
 	<th>ID</th>
@@ -28,7 +28,7 @@ while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
 </tr>
 <?php
 $sql = "SELECT * FROM localidades WHERE Dptcod='".$dptcod."' ORDER BY LocNom";
-echo $sql;
+//echo $sql;
 $result = mysqli_query($conn, $sql);
 if(mysqli_num_rows($result) < 1 ){
 	echo "<tr>";

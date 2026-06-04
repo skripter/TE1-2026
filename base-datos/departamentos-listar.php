@@ -8,10 +8,10 @@ require('./db.php');
 <head>
 <title>Departamentos</title>
 <meta charset='UTF-8'>
-<link href='./estilo.css' rel='stylesheet' type='text/css'>
+<link href='/bootstrap-5.3.8-dist/css/bootstrap.css' rel='stylesheet' type='text/css'>
 </head>
 <body>
-<table class='tablita'>
+<table class='table table-hover table-striped'>
 <caption>Listado de Departamentos</caption>
 <tr>
 	<th>ID</th>
@@ -31,7 +31,7 @@ while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
 	echo "<tr>\n";
 	echo "<td>".$row['Dptcod']."</td>\n";
 	echo "<td>".$row['Dptnom']."</td>\n";
-	echo "<td><a href='./localidades-ver.php?dptcod=".$row['Dptcod']."'>Ver localidades</td>\n";
+	echo "<td><a href='./localidades-ver.php?dptcod=".$row['Dptcod']."' class='btn btn-primary'>Ver localidades</td>\n";
 	echo "</tr>\n";
 }//fin while
 ?>
