@@ -1,6 +1,8 @@
 -Iniciar la consola de XAMPP
 mysql -u root -p
-(Dar enter, la contraseña por defecto está en blanco en XAMPP)
+-(Dar enter, la contraseña por defecto está en blanco en XAMPP)
 ALTER USER 'root'@'localhost' IDENTIFIED BY 'YourNewSecurePassword';
+-reiniciar mysql ó flush privileges
+quit;
 
 https://github.com/twbs/bootstrap/releases/download/v5.3.8/bootstrap-5.3.8-dist.zip
