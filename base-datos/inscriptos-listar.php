@@ -70,10 +70,14 @@ if(mysqli_num_rows($result) < 1 ){
 
 while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
 	echo "<tr>\n";
-	echo "<td>".$row['insid']."</td>\n";
-	echo "<td>".$row['insci']."</td>\n";
+	$ci_rec = "*****".substr($row['insci'], -3);
+	echo "<td>".$ci_rec."</td>\n";
 	echo "<td>".$row['insnombre']."</td>\n";
-	echo "<td>".$row['inscorreo']."</td>\n";
+	echo "<td>".$row['inscelular']."</td>\n";
+	$partescorreo = explode("@", $row['inscorreo']);
+	$caracteresantesarroba = strlen($partescorreo[0])-3;
+	//echo "<td>".str_repeat("*", $caracteresantesarroba).substr($partescorreo[0],-2)."@".$partescorreo[1]."</td>\n";
+	echo "<td>".substr($partescorreo[0],0,3).str_repeat("*", $caracteresantesarroba)."@".$partescorreo[1]."</td>\n";
 	echo "<td><a href='./inscriptos-ver.php?insid=".$row['insid']."'>Ver detalle</td>\n";
 	echo "</tr>\n";
 }//fin while
