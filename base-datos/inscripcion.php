@@ -3,6 +3,36 @@
 //error_reporting(E_ALL);
 session_start();
 require('./inscriptos-db.php');
+$mensajeok = NULL;
+$mensajeerror = NULL;
+if($_POST){
+
+extract($_POST,EXTR_OVERWRITE);
+
+if(!is_numeric($insci) or $insci < 1 or strlen($insci) < 7){
+    $mensajeerror = 'Cédula inválida.';
+}
+
+if(empty($insnombre) or strlen($insnombre) < 5){
+    $mensajeerror = 'Nombre inválido.';
+}
+
+if(empty($inscelular) or strlen($inscelular) < 9){
+    $mensajeerror = 'Número de celular inválido.';
+}
+if(!$mensajeerror){
+$insci = mysqli_real_escape_string($conn, $insci);
+$insnombre = mysqli_real_escape_string($conn, $insnombre);
+$inscelular = mysqli_real_escape_string($conn, $inscelular);
+$inscorreo = mysqli_real_escape_string($conn, $inscorreo);
+
+$sql = "INSERT INTO inscriptos (insci, insnombre, inscelular, inscorreo) VALUES ('".$insci."', '".$insnombre."', '".$inscelular."', '".$inscorreo."')";
+//echo $sql;
+mysqli_query($conn, $sql) or exit("Error al guardar inscripción: ".mysqli_error($conn));
+$mensajeok = 'Inscripción guardada con éxito. C.I.: '.$insci;
+unset($insci, $insnombre, $inscelular, $inscorreo);
+}//fin if !$mensajeerror
+}//fin if $_POST
 ?>
 <html>
 <head>
@@ -31,19 +61,25 @@ require('./inscriptos-db.php');
 	
 <article>
 
-<form action='./inscriptos-guardar.php' method='POST'>
+<form action='<?php echo $_SERVER['PHP_SELF']; ?>' method='POST'>
 	<div class='col-4 offset-4'>
-	<input type='number' class='form-control mb-1' name='insci' min='1' placeholder='Cedula' required autofocus>
-	<input type='text' class='form-control mb-1' name='insnombre' placeholder='Nombre' required>
-	<input type='text' class='form-control mb-1' name='inscelular' placeholder='Celular' required>
-	<input type='email' class='form-control mb-1' name='inscorreo' placeholder='Mail'>
+	<input type='number' class='form-control mb-1' name='insci' min='1' placeholder='Cedula' value='<?php echo $insci; ?>' required autofocus>
+	<input type='text' class='form-control mb-1' name='insnombre' placeholder='Nombre' value='<?php echo $insnombre; ?>' required>
+	<input type='text' class='form-control mb-1' name='inscelular' placeholder='Celular' value='<?php echo $inscelular; ?>' required>
+	<input type='email' class='form-control mb-1' name='inscorreo' placeholder='Mail' value='<?php echo $inscorreo; ?>'>
 	<button type='submit' value='Guardar' class='btn btn-primary m-1 text-center' style='width: 100%;'><img src='/images/famfamfam-silk-master/dist/png/add.png' alt='Guardar'>&nbsp;Guardar inscripción</button>
 
-	<?php if(isset($_SESSION['mensaje'])){ ?>
+	<?php if(isset($mensajeerror)){ ?>
 	<div class='alert alert-danger' role='alert'>
-		<?php echo $_SESSION['mensaje']; ?>
+		<?php echo $mensajeerror; ?>
 	</div>
-	<?php unset($_SESSION['mensaje']); } ?>
+	<?php unset($mensajeerror); } ?>
+
+	<?php if(isset($mensajeok)){ ?>
+	<div class='alert alert-success' role='alert'>
+		<?php echo $mensajeok; ?>
+	</div>
+	<?php unset($mensajeok); } ?>
 	</div><!-- fin col-4 -->
 
 </form>
@@ -78,12 +114,13 @@ while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
 	$caracteresantesarroba = strlen($partescorreo[0])-3;
 	//echo "<td>".str_repeat("*", $caracteresantesarroba).substr($partescorreo[0],-2)."@".$partescorreo[1]."</td>\n";
 	echo "<td>".substr($partescorreo[0],0,3).str_repeat("*", $caracteresantesarroba)."@".$partescorreo[1]."</td>\n";
-	echo "<td><a href='./inscripcion-ver.php?insid=".$row['insid']."'>Ver detalle</td>\n";
+	echo "<td><a href='./inscripcion-ver.php?insid=".$row['insid']."'>Ver detalle</a></td>\n";
 	echo "</tr>\n";
 }//fin while
 ?>
 </table>
 <br>
+<a href='./inscripcion-sortear.php'>Sortear</a>
 </article>
 <footer>
 	&copy; TDA1 2025
