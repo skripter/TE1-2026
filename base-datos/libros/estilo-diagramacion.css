@@ -1,0 +1,97 @@
+body{
+	background: #f9fbec;
+}
+.contenedor{
+	width: 80%;
+	min-width: 600px;
+	margin: 0 auto;
+	/*border: 1px solid #ff0000;*/
+}
+
+header{
+	border: 1px solid #000000;
+	border-radius: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	margin: 4px;
+	text-align: center;
+	padding: 20px;
+	background: #000000 url('./images/gloomy-stripes-dark-background-tile.jpg');
+}
+
+header a{
+	color: #ffffff;
+	text-decoration: none;
+	font-size: 200%;
+	font-weight: bold;
+}
+nav{
+	text-align: center;
+	/*border: 1px solid #45e42c;*/
+	margin: 4px;
+}
+nav a{
+	text-decoration: none;
+	font-size: 130%;
+}
+section{
+	width: 18%;
+	border:#eb2cc5;
+	/*background: #ffe6fa;*/
+	margin: 4px 0 4px 4px;
+	padding: 4px;
+	float: left;
+}
+section a{
+	display: block;
+	text-decoration: none;
+	border: 1px solid #ddda14;
+	background: #eaeeb0d7;
+	margin: 3px;
+}
+
+section a:hover{
+	border: 1px solid #ebe722;
+	background: #ced394;
+}
+
+section a:active{
+	color: #980c15;
+}
+
+section a img{
+	padding-right: 3px;
+	vertical-align: text-top;
+}
+article{
+	width: 76%;
+	border:#1723d0;
+	/*background: #ebe7ff;*/
+	float: right;
+	margin: 4px 4px 4px 0;
+	padding: 4px;
+}
+footer{
+	clear:both;
+	text-align: center;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 80%;
+	color: #afadad;
+	border-top: 1px solid #afadad;
+}
+.tablita{
+	border: 1px solid #000000;
+	border-collapse: collapse;
+	width: 80%;
+
+}
+.tablita td, .tablita th{
+	border: 1px solid #000000;
+	padding: 5px;
+	text-align: center;
+}
+.tablita caption{
+	border: 1px solid #000000;
+	border-bottom: 0;
+	padding: 8px;
+	background: #f8f887;
+}
