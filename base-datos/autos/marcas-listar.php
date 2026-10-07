@@ -36,6 +36,7 @@ echo "<h4>".$_SESSION['msgok']."</h4>";
 unset($_SESSION['msgerror']);
 unset($_SESSION['msgok']);
 ?>
+<a href='./modelo-agregar.php' title='Agregar auto'>Agregar modelo de vehiculo</a>
 <table class='tablita'>
 <caption>Listado de Marcas</caption>
 <tr>

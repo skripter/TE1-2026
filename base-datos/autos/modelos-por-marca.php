@@ -28,6 +28,9 @@ while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
 	<th>Modelo</th>
 	<th>Año</th>
 	<th>Potencia</th>
+	<th>Cilindros</th>
+	<th>Cilindrada</th>
+	<th>Acciones</th>
 </tr>
 <?php
 $sql = "SELECT * FROM modelos ";
@@ -47,6 +50,9 @@ while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
 	echo "<td>".$row['modnombre']."</td>\n";
 	echo "<td>".$row['modanio']."</td>\n";
 	echo "<td>".$row['modpotencia']."</td>\n";
+	echo "<td>".$row['modcilindros']."</td>\n";
+	echo "<td>".$row['modcilindrada']."</td>\n";
+	echo "<td><a href='modelo-editar.php?modid=".$row['modid']."'>Editar</a> | <a href='modelo-borrar.php?modid=".$row['modid']."'>Borrar</a></td>\n";
 	echo "</tr>\n";
 }//fin while
 ?>
